@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Go Database</title>
+    <link rel="stylesheet" href="tab.css">
+</head>
+
+<body>
+    <h1>HOME</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Appearance</th>
+            <th>type</th>
+            <th>Check ID</th>
+            <th>Base Attack</th>
+            <th>Base Defense</th>
+            <th>Base Stamina</th>
+        </tr>
+        <div class="collection">
+            <% for(let x=1; x < 1000; x++) {%>
+                <tr>
+                    <td class="poke-id">
+                        <%= info[`${x}`]['id'] %>
+                    </td>
+                    <td class="poke-name">
+                        <%= info[`${x}`]['name'] %>
+                    </td>
+                    <td class="poke-appr">x</td>
+                    <td class="poke-type">x</td>
+                    <td>
+                        <% if(one[`${x}`]['pokemon_id']==info[`${x}`]['id']){ %>
+                            <%= one[`${x}`]['pokemon_id'] %>
+                                <% } %>
+                    </td>
+                    <td class="base-atk">
+                        <%= one[`${x}`]['base_attack'] %>
+                    </td>
+                    <td class="base-def">
+                        <%= one[`${x}`]['base_defense'] %>
+                    </td>
+                    <td class="base-stm">
+                        <%= one[`${x}`]['base_stamina'] %>
+                    </td>
+                </tr>
+                <% } %>
+        </div>
+    </table>
+
+    <a href="http://localhost:3000/pokemon">Pokemon</a>
+    <script src="table.js"></script>
+</body>
+
+</html>

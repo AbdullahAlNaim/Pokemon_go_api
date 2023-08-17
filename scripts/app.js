@@ -51,67 +51,79 @@ async function showing(id) {
 finding.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    let finder = dex.value;
-
-    const poke = gottem(finder)
+    let name = dex.value;
+    //let finder = 1;
+    const poke = gottem()
         //.then(data => pokemonName.innerHTML = data)
         .then(function (data) {
             //console.log(data['1']);
             for (let x = 1; x < 999; x++) {
-                if (data[`${x}`]['name'] == finder) {
+                //USING HARD CODED JSON LIMIT
+                if (data[`${x}`]['name'] == name) {
                     console.log(data[`${x}`])
-                    finder = data[`${x}`]['id'];
-                    return finder
+                    let finder = data[`${x}`]['id'];
+                    return finder;
                 }
             }
-        }).then(() => {
+        })
 
-            const shine = shinyFound(finder)
-                .then(function (data) {
-                    shinyWild.innerHTML = data['found_wild'];
-                    shinyReseach.innerHTML = data['found_research'];
-                    shinyRaids.innerHTML = data['found_raid'];
-                    shinyEggs.innerHTML = data['found_egg'];
-                    shinyEvo.innerHTML = data['found_evolution'];
-                    shinyPhoto.innerHTML = data['found_photobomb'];
-                    //console.log(data)
-                })
-        }).then(() => {
-
-            const stats = baseStats()
-                .then(function (data) {
-                    //console.log(data)
-                    return data;
-                }).then(function (data) {
-                    for (let x = 1; x < data.length; x++) {
-                        if (data[x]['pokemon_id'] == finder) {
-                            //console.log(finder, data[x])
-                            baseAttack.innerHTML = data[x]['base_attack'];
-                            baseDefense.innerHTML = data[x]['base_defense'];
-                            baseStamina.innerHTML = data[x]['base_stamina'];
-                        }
-                    }
-                })
-        }).then(() => {
-
-            const max = maxcp()
-                .then(function (data) {
-                    for (let x = 0; x < data.length; x++) {
-                        if (data[x]['pokemon_id'] == finder) {
-                            maxCP.innerHTML = data[x]['max_cp'];
-                        }
-                    }
-                })
-        }).then(() => {
-
-
-
+        .then((finder) => {
             const img = showing(finder)
                 .then(function (data) {
                     show.src = data['sprites']['front_default']
-                    //show.src = data;
-                })
+                    let x = data['id'])
+            return x
         })
+})
+    .then()
+const stats = baseStats()
+    .then(function (data) {
+        //console.log(data)
+        return data;
+    }).then(function (data) {
+        for (let x = 1; x < data.length; x++) {
+            if (data[x]['pokemon_id'] == data) {
+                //console.log(finder, data[x])
+                baseAttack.innerHTML = data[x]['base_attack'];
+                baseDefense.innerHTML = data[x]['base_defense'];
+                baseStamina.innerHTML = data[x]['base_stamina'];
+            }
+        }
+        return finder;
+    })
+
+
+    .then((finder) => {
+        console.log(finder)
+        const shine = shinyFound(finder)
+            .then(function (data) {
+                shinyWild.innerHTML = data['found_wild'];
+                shinyReseach.innerHTML = data['found_research'];
+                shinyRaids.innerHTML = data['found_raid'];
+                shinyEggs.innerHTML = data['found_egg'];
+                shinyEvo.innerHTML = data['found_evolution'];
+                shinyPhoto.innerHTML = data['found_photobomb'];
+                console.log(data['id'])
+                return data['id'];
+            })
+
+    })
+    .then((data) => {
+
+
+    .then((finder) => {
+
+        const max = maxcp()
+            .then(function (data) {
+                for (let x = 0; x < data.length; x++) {
+                    if (data[x]['pokemon_id'] == finder) {
+                        maxCP.innerHTML = data[x]['max_cp'];
+                        return finder;
+                    }
+                }
+            })
+    })
+
 
 })
 
