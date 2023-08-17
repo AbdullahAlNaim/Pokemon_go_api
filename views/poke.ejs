@@ -5,16 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>POKEMON</h1>
+    <div class="container">
+        <h1>POKEMON</h1>
 
-    <ul>
-        <li>Data Structures and Algorithms</li>
-        <li>Coding Course on Udemy</li>
-        <li>Personal Projects</li>
-    </ul>
+        <form id="finding" action="/">
+            <input id="dex" name="search" type="text" placeholder="Pokemon Name">
+            <br>
+            <button>Submit</button>
+        </form>
+
+
+        <div class="subinfo">
+            <div class="identify">
+                <h3>Pokemon Name</h3>
+                <p id="pokemon_name"></p>
+            </div>
+            <div class="show">
+                <img id="showImg" src="" alt="">
+            </div>
+            <div class="shiny">
+                <h3>Shiny Found</h3>
+                <p>Found in Wild: <span id="shiny-wild"></span></p>
+                <p>Found in Research: <span id="shiny-research"></span></p>
+                <p>Found in Raids: <span id="shiny-raids"></span></p>
+                <p>Found in Eggs: <span id="shiny-eggs"></span></p>
+                <p>Found in Evolution: <span id="shiny-evo"></span></p>
+                <p>Found in Photobomb: <span id="shiny-photo"></span></p>
+            </div>
+            <div class="base-stats">
+                <h3>Base Stats</h3>
+                <p>Base Attack: <span id='base-attack'></span></p>
+                <p>Base Defense: <span id='base-defense'></span></p>
+                <p>Base Speed: <span id='base-stamina'></span></p>
+            </div>
+            <div class="max-cp">
+                <h3>CP MAX</h3>
+                <p>Max CP: <span id="maxcp"></span></p>
+            </div>
+        </div>
+    </div>
+
 
 
     <script src="app.js"></script>
